@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Super Sprinter 3000</title>
+</head>
+
+<body>
+    <h2> User Story manager </h2>
+
+    <form action="/story" method='GET'>
+        <input type="submit" value="New user story">
+    </form>
+    <br><br>
+
+    <table>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                border: 1px solid black;
+            }
+            
+            td,
+            th {
+                border: 1px solid black;
+                text-align: left;
+                padding: 8px;
+            }
+        </style>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Story Title</th>
+                <th>User Story</th>
+                <th>Acceptance Criteria</th>
+                <th>Business Value</th>
+                <th>Estimation</th>
+                <th>Status</th>
+                <th> Edit story </th>
+                <th> Delete story </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for item in table %}
+            <tr>
+                <td> {{ item[0] }} </td>
+                <td> {{ item[1] }} </td>
+                <td> {{ item[2] }} </td>
+                <td> {{ item[3] }} </td>
+                <td> {{ item[4] }} </td>
+                <td> {{ item[5] }} </td>
+                <td> {{ item[6] }} </td>
+                <td align="middle">
+                    <form action="/story/{{ item[0] }}" method="GET">
+                        <input type="image" src="https://d30y9cdsu7xlg0.cloudfront.net/png/70551-200.png" height="50" width="50">
+                    </form>
+                </td>
+                <td align="middle">
+                    <form action="/story/{{ item[0] }}/delete" method="POST">
+                        <input type="image" src="https://cdn3.iconfinder.com/data/icons/cleaning-icons/512/Trash_Can-256.png" height="50" width="50">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>
